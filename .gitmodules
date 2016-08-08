@@ -2,7 +2,3 @@
 	path = zsh/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
   ignore = dirty
-[submodule "nvm"]
-	path = nvm
-	url = https://github.com/creationix/nvm.git
-	branch = master
