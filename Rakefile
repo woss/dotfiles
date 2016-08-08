@@ -26,6 +26,7 @@ task :install => [:submodule_init, :submodules] do
   end
 
   Rake::Task["install_prezto"].execute
+  install_nvm
 
   install_fonts
 
@@ -288,6 +289,16 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+end
+
+def install_nvm
+  puts
+  puts "Installing nvm..."
+
+  run %{ ln -nfs "$HOME/.yadr/nvm" "${ZDOTDIR:-$HOME}/.nvm" }
+
+  puts "Creating directories for your customizations"
+  run %{ source "${ZDOTDIR:-$HOME}/.nvm/nvm.sh" }
 end
 
 def want_to_install? (section)
