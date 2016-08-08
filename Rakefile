@@ -26,7 +26,7 @@ task :install => [:submodule_init, :submodules] do
   end
 
   Rake::Task["install_prezto"].execute
-  install_nvm
+  Rake::Task["install_nvm"].execute
 
   install_fonts
 
@@ -35,6 +35,10 @@ task :install => [:submodule_init, :submodules] do
   run_bundle_config
 
   success_msg("installed")
+end
+
+task :install_nvm do
+    install_nvm
 end
 
 task :install_prezto do
@@ -295,10 +299,7 @@ def install_nvm
   puts
   puts "Installing nvm..."
 
-  run %{ ln -nfs "$HOME/.yadr/nvm" "${ZDOTDIR:-$HOME}/.nvm" }
-
-  puts "Creating directories for your customizations"
-  run %{ source "${ZDOTDIR:-$HOME}/.nvm/nvm.sh" }
+  run %{ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash }
 end
 
 def want_to_install? (section)
