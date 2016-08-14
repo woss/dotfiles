@@ -28,12 +28,14 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_prezto"].execute
   Rake::Task["install_nvm"].execute
 
+
   install_fonts
 
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
   run_bundle_config
-
+  create_go_folder
+  
   success_msg("installed")
 end
 
@@ -367,6 +369,11 @@ def apply_theme_to_iterm_profile_idx(index, color_scheme_path)
 
   run %{ /usr/libexec/PlistBuddy -c "Merge '#{color_scheme_path}' :'New Bookmarks':#{index}" ~/Library/Preferences/com.googlecode.iterm2.plist }
   run %{ defaults read com.googlecode.iterm2 }
+end
+
+def create_go_folder:
+  puts "Creating folder for GOPATH"
+  run %{ mkdir -p $HOME/go }
 end
 
 def success_msg(action)
