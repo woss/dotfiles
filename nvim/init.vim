@@ -1,72 +1,59 @@
-call plug#begin('~/.config/nvim/plugged')
+if filereadable(expand("~/.config/nvim/plugins.vim"))
+  source ~/.config/nvim/plugins.vim
+endif
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'eugen0329/vim-esearch'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'Shougo/unite.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'junkblocker/unite-codesearch'
-Plug 'Shougo/neomru.vim'
+function! <SID>AutoProjectRootCD()
+  try
+    if &ft != 'help'
+      ProjectRootCD
+    endif
+  catch
+    " Silently ignore invalid buffers
+  endtry
+endfunction
 
-Plug 'dbakker/vim-projectroot'
-" Theme
-" Plug 'tyrannicaltoucan/vim-deep-space'
-" Plug 'juanedi/predawn.vim'
-Plug 'rakr/vim-one'
-" Plug 'dracula/vim'
-
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for' :'go' }
-
-" Group dependencies, vim-snippets depends on ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'zchee/deoplete-go', {'build': 'make', 'for': 'go'}
-Plug 't-yuki/vim-go-coverlay', {'for': 'go'}
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.config/nvim/plugged/gocode/vim/symlink.sh' }
-
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
-
-Plug 'Shutnik/jshint2.vim'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'mhartington/deoplete-typescript'
-Plug 'mustache/vim-mustache-handlebars'
-
-call plug#end()
+autocmd BufEnter * call <SID>AutoProjectRootCD()
+let g:AutoPairsUseInsertedCount = 1
 
 " Neovim Settings
-" set guifont=DejaVu_Sans_Mono:h12
+" leader is ,
+let mapleader = ','
 
-if has('gui_nvim')
-  set transparency=10
+if exists("neovim_dot_app")
+"if has('gui_running')
+  set guifont=DejaVu_Sans_Mono:h12
+  "set transparency=10
+else
+  " Line below allows to do CMD+C (copy) from mouse selection while in terminal
+  set mouse=
 endif
-" set termguicolors
-" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 " let $NVIM_PYTHON_LOG_FILE="nvimpy.log"
 " let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
-" set clipboard+=unnamedplus
 " Currently needed for neovim paste issue
 " set pastetoggle=<f6>
 " set nopaste
 " Let airline tell me my status
-" set noshowmode
+set noshowmode
 set noswapfile
 filetype on
+filetype plugin indent on
 " set relativenumber number
 " set tabstop=2 shiftwidth=2 expandtab
 set conceallevel=0
 " block select not limited by shortest line
 set virtualedit=
+
 set wildmenu
 set laststatus=2
-"set colorcolumn=100
+set colorcolumn=79
 set wrap linebreak nolist
 set wildmode=full
-" leader is ,
-let mapleader = ','
 set undofile
 set undodir="$HOME/.VIM_UNDO_FILES"
-
+syntax on
+set number
+" set autochdir
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
@@ -81,40 +68,42 @@ set wildignore+=*.hg/**
 set wildignore+=*node_modules/**
 set wildignore+=*bower_components/**
 
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
 let g:netrw_keepdir= 0
 
-let g:esearch = {
-  \ 'adapter':    'fzf',
-  \ 'backend':    'nvim',
-  \ 'out':        'win',
-  \ 'batch_size': 1000,
-  \ 'use':        ['visual', 'hlsearch', 'last'],
-  \}
-
+"let g:esearch = {
+"  \ 'adapter':    'ag::',
+"  \ 'backend':    'nvim',
+"  \ 'out':        'win',
+"  \ 'batch_size': 1000,
+"  \ 'use':        ['visual', 'hlsearch', 'last'],
+"  \}
+"call esearch#map('<leader>ff', 'esearch')
 " Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+"let g:unite_source_history_yank_enable = 1
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+""nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
+"Fuzzy find
 nnoremap <leader>f :<C-u>FZF<cr>
 
-
 " Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
-
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+  "" Play nice with supertab
+  "let b:SuperTabDisabled=1
+  "" Enable navigation with control-j and control-k in insert mode
+  "imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  "imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"endfunction
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -151,11 +140,21 @@ let g:fzf_colors =
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.fzf-history'
 
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
 
+
+
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_debug = 1
+let g:deoplete#enable_debug = 1
 " let g:deoplete#enable_ignore_case = 1
 " let g:deoplete#auto_complete_start_length = 0
 " let g:auto_complete_start_length = 0
@@ -172,13 +171,13 @@ nnoremap Q <nop>
 " recording macros is not my thing
 map q <Nop>
 
-" color dracula
 let g:airline_theme='one'
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
+
   if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -193,4 +192,3 @@ endif
 
 set background=dark " for the dark version / light
 colorscheme one
-syntax on
