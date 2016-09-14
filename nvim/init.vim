@@ -13,7 +13,9 @@ function! <SID>AutoProjectRootCD()
 endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
+
 let g:AutoPairsUseInsertedCount = 1
+let g:chromatica#responsive_mode=1
 
 " Neovim Settings
 " leader is ,
@@ -73,37 +75,35 @@ let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 
 let g:netrw_keepdir= 0
+nnoremap <leader>b :<C-u>Buffers<cr>
 
-"let g:esearch = {
-"  \ 'adapter':    'ag::',
-"  \ 'backend':    'nvim',
-"  \ 'out':        'win',
-"  \ 'batch_size': 1000,
-"  \ 'use':        ['visual', 'hlsearch', 'last'],
-"  \}
-"call esearch#map('<leader>ff', 'esearch')
-" Unite
-"let g:unite_source_history_yank_enable = 1
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-""nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-"nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
-"Fuzzy find
-nnoremap <leader>f :<C-u>FZF<cr>
+" FZFMru binding
+nnoremap <leader>r :<C-u>FZFMru<cr>
+let g:fzf_mru_file_list_size = 25
+let g:fzf_mru_ignore_patterns = 'fugitive\|\.git/\|\.hg/\|\_^/tmp/'
 
-" Custom mappings for the unite buffer
-"autocmd FileType unite call s:unite_settings()
-"function! s:unite_settings()
-  "" Play nice with supertab
-  "let b:SuperTabDisabled=1
-  "" Enable navigation with control-j and control-k in insert mode
-  "imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  "imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-"endfunction
+" FZF
+nnoremap <leader>f :<C-u>Files<cr>
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -113,26 +113,12 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
-" In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'enew' }
+"let g:fzf_layout = { 'down': '~35%' }
+"let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
 
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_files_options =
+  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'" --preview-window right:45%'
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -147,10 +133,7 @@ let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
-
-
-
-
+" Deoplete
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 let g:deoplete#enable_at_startup = 1
@@ -161,7 +144,6 @@ let g:deoplete#enable_debug = 1
 " let g:deoplete#enable_refresh_always = 1
 " let g:deoplete#max_list = 1000
 " let g:deoplete#enable_profile = 1
-
 
 let g:go_fmt_command = "goimports"
 let g:table_mode_corner="|"

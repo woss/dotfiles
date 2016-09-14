@@ -1,13 +1,40 @@
 call plug#begin('~/.config/nvim/plugged')
+
+" File search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'sbdchd/neoformat'
-"Plug 'eugen0329/vim-esearch'
+Plug 'lvht/fzf-mru'
+
+" Buf, MRU, File ssearch
+"Plug 'kien/ctrlp.vim'
+
+Plug 'haya14busa/incsearch.vim'
+
+"An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
+Plug 'dyng/ctrlsf.vim'
+
+" Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+"Plug 'coderifous/textobj-word-column.vim'
+
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Code formatter
+Plug 'Chiel92/vim-autoformat'
+
+" Search
+Plug 'eugen0329/vim-esearch'
+
+" Support for editorconfig
 Plug 'editorconfig/editorconfig-vim'
-"Plug 'Shougo/unite.vim'
+
+" Status bar
 Plug 'vim-airline/vim-airline'
-"Plug 'junkblocker/unite-codesearch'
-"Plug 'Shougo/neomru.vim'
+
+" Ack search
+Plug 'mileszs/ack.vim'
+
 Plug 'dbakker/vim-projectroot'
 "Plug 'kassio/neoterm'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
