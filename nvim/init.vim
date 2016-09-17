@@ -26,7 +26,6 @@ let mapleader = ','
 nnoremap ; :
 
 if exists("neovim_dot_app")
-if has('gui_running')
   set guifont=DejaVu_Sans_Mono:h12
   "set transparency=10
 else
