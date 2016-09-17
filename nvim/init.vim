@@ -1,3 +1,4 @@
+" vim:set ft=vim sw=2 ts=2:
 if filereadable(expand("~/.config/nvim/plugins.vim"))
   source ~/.config/nvim/plugins.vim
 endif
@@ -21,13 +22,16 @@ let g:chromatica#responsive_mode=1
 " leader is ,
 let mapleader = ','
 
+"Map ; to :
+nnoremap ; :
+
 if exists("neovim_dot_app")
-"if has('gui_running')
+if has('gui_running')
   set guifont=DejaVu_Sans_Mono:h12
   "set transparency=10
 else
   " Line below allows to do CMD+C (copy) from mouse selection while in terminal
-  set mouse=
+  set mouse=r
 endif
 
 " let $NVIM_PYTHON_LOG_FILE="nvimpy.log"
@@ -77,6 +81,7 @@ let g:javascript_plugin_ngdoc = 1
 let g:netrw_keepdir= 0
 nnoremap <leader>b :<C-u>Buffers<cr>
 
+" Increment Search
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 " :h g:incsearch#auto_nohlsearch
@@ -96,29 +101,30 @@ let g:fzf_mru_ignore_patterns = 'fugitive\|\.git/\|\.hg/\|\_^/tmp/'
 
 " FZF
 nnoremap <leader>f :<C-u>Files<cr>
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+nnoremap <leader>t :<C-u>Tags<cr>
+"function! s:fzf_statusline()
+  "" Override statusline as you like
+  "highlight fzf1 ctermfg=161 ctermbg=251
+  "highlight fzf2 ctermfg=23 ctermbg=251
+  "highlight fzf3 ctermfg=237 ctermbg=251
+  "setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+"endfunction
+"autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
-"let g:fzf_layout = { 'down': '~35%' }
+let g:fzf_layout = { 'down': '~35%' }
 "let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
+"let g:fzf_layout = { 'window': '-tabnew' }
 
 let g:fzf_files_options =
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'" --preview-window right:45%'
+      \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'" --preview-window right:45%'
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -131,18 +137,18 @@ let g:fzf_buffers_jump = 1
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
-let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+"let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " Deoplete
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_debug = 1
-" let g:deoplete#enable_ignore_case = 1
-" let g:deoplete#auto_complete_start_length = 0
-" let g:auto_complete_start_length = 0
-" let g:deoplete#enable_refresh_always = 1
-" let g:deoplete#max_list = 1000
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#auto_complete_start_length = 0
+let g:auto_complete_start_length = 0
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_list = 1000
 " let g:deoplete#enable_profile = 1
 
 let g:go_fmt_command = "goimports"
@@ -161,8 +167,8 @@ let g:airline_theme='one'
 if (empty($TMUX))
 
   if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -174,3 +180,8 @@ endif
 
 set background=dark " for the dark version / light
 colorscheme one
+
+
+
+
+"let $FZF_DEFAULT_COMMAND= 'ag -g ""'

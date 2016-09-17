@@ -5,6 +5,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lvht/fzf-mru'
 
+Plug 'craigemery/vim-autotag'
+
 " Buf, MRU, File ssearch
 "Plug 'kien/ctrlp.vim'
 

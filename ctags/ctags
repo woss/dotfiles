@@ -1,3 +1,8 @@
+--recurse=yes
+
+--exclude=.git
+--exclude=vendor/*
+
 
 --langdef=js
 --langmap=js:.js
@@ -6,6 +11,10 @@
 --regex-JavaScript=/([A-Za-z0-9._$\#\(\)]+)[ \t]*[:][ \t]*([A-Za-z0-9\'\"._\-\#\(]+)[ \t]*\{/\1/p,property/
 --regex-JavaScript=/var ([A-Za-z0-9._$\#]+)[ \t]*[=][ \t]*([A-Za-z0-9._'"\$\#\[\{]+)[,|;]/\1/v,variable/
 --regex-JavaScript=/([A-Za-z0-9._$\#]+)[ \t]*[=][ \t]*([A-Za-z0-9._'"\$\#]+)extend\(/\1/c,class/
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*
+
 
 --regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
 --regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,function,association/
