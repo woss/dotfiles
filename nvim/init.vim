@@ -154,21 +154,22 @@ let g:go_fmt_command = "goimports"
 let g:table_mode_corner="|"
 
 " Neomake
-autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files:
 let g:neomake_javascript_eslint_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
+            \ 'args': ['--no-color', '--format'],
+            \ 'errorformat': '%f: line %l\, col %c\, %m'
+            \ }
+autocmd BufWritePost * Neomake
+
 nmap <Leader><Space>o :lopen<CR>      " open location window
 nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 let g:neomake_logfile = '/Users/danijel/logs/neomake.log'
-
+let g:neomake_verbose = 3
 
 " No need for ex mode
 nnoremap Q <nop>
