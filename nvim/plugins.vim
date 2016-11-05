@@ -57,7 +57,7 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'mhartington/deoplete-typescript'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 
 
 " GO LANG PART

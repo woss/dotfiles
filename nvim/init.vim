@@ -55,23 +55,10 @@ set colorcolumn=79
 set wrap linebreak nolist
 set wildmode=full
 set undofile
-set undodir="$HOME/.VIM_UNDO_FILES"
+set undodir="~/.config/nvim/.VIM_UNDO_FILES"
 syntax on
 set number
-" set autochdir
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=*.git/**
-set wildignore+=*.hg/**
-set wildignore+=*node_modules/**
-set wildignore+=*bower_components/**
+set shell=/bin/zsh
 
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
@@ -129,7 +116,7 @@ let g:fzf_files_options =
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.fzf-history'
+let g:fzf_history_dir = '~/.config/nvim/.fzf-history'
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -155,8 +142,9 @@ let g:table_mode_corner="|"
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files:
+" let g:neomake_jsx_enabled_makers = ['eslint']
+" Allow JSX in normal JS files:
+" let g:jsx_ext_required = 0
 let g:neomake_javascript_eslint_maker = {
             \ 'args': ['--no-color', '--format'],
             \ 'errorformat': '%f: line %l\, col %c\, %m'
@@ -168,8 +156,8 @@ nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-let g:neomake_logfile = '/Users/danijel/logs/neomake.log'
-let g:neomake_verbose = 3
+let g:neomake_logfile = '~/.config/nvim/neomake.log'
+let g:neomake_verbose = 1
 
 " No need for ex mode
 nnoremap Q <nop>
@@ -197,8 +185,5 @@ endif
 
 set background=dark " for the dark version / light
 colorscheme one
-
-
-
 
 "let $FZF_DEFAULT_COMMAND= 'ag -g ""'
