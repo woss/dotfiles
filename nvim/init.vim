@@ -33,11 +33,6 @@ else
   set mouse=r
 endif
 
-" let $NVIM_PYTHON_LOG_FILE="nvimpy.log"
-" let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
-" Currently needed for neovim paste issue
-" set pastetoggle=<f6>
-" set nopaste
 " Let airline tell me my status
 set noshowmode
 set noswapfile
@@ -122,20 +117,6 @@ let g:fzf_history_dir = '~/.config/nvim/.fzf-history'
 let g:fzf_buffers_jump = 1
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R'
-" [Commands] --expect expression for directly executing the command
-"let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-
-" Deoplete
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_debug = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#auto_complete_start_length = 0
-let g:auto_complete_start_length = 0
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_list = 1000
-" let g:deoplete#enable_profile = 1
 
 let g:go_fmt_command = "goimports"
 let g:table_mode_corner="|"
@@ -150,14 +131,6 @@ let g:neomake_javascript_eslint_maker = {
             \ 'errorformat': '%f: line %l\, col %c\, %m'
             \ }
 autocmd BufWritePost * Neomake
-
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-let g:neomake_logfile = '~/.config/nvim/neomake.log'
-let g:neomake_verbose = 1
 
 " No need for ex mode
 nnoremap Q <nop>
@@ -185,5 +158,3 @@ endif
 
 set background=dark " for the dark version / light
 colorscheme one
-
-"let $FZF_DEFAULT_COMMAND= 'ag -g ""'
