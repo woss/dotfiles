@@ -21,7 +21,6 @@ let g:chromatica#responsive_mode=1
 " Neovim Settings
 " leader is ,
 let mapleader = ','
-
 "Map ; to :
 nnoremap ; :
 
@@ -38,12 +37,11 @@ set noshowmode
 set noswapfile
 filetype on
 filetype plugin indent on
-" set relativenumber number
+ set relativenumber number
 " set tabstop=2 shiftwidth=2 expandtab
 set conceallevel=0
 " block select not limited by shortest line
 set virtualedit=
-
 set wildmenu
 set laststatus=2
 set colorcolumn=79
@@ -55,12 +53,16 @@ syntax on
 set number
 set shell=/bin/zsh
 
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
-let g:netrw_keepdir= 0
-nnoremap <leader>b :<C-u>Buffers<cr>
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+"autocmd vimenter * NERDTree
 
 " Increment Search
 map /  <Plug>(incsearch-forward)
@@ -83,6 +85,7 @@ let g:fzf_mru_ignore_patterns = 'fugitive\|\.git/\|\.hg/\|\_^/tmp/'
 " FZF
 nnoremap <leader>f :<C-u>Files<cr>
 nnoremap <leader>t :<C-u>Tags<cr>
+nnoremap <leader>b :<C-u>Buffers<cr>
 "function! s:fzf_statusline()
   "" Override statusline as you like
   "highlight fzf1 ctermfg=161 ctermbg=251
@@ -118,8 +121,21 @@ let g:fzf_buffers_jump = 1
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R'
 
-let g:go_fmt_command = "goimports"
+
+" Esearch plugin setting
+let g:esearch = {
+  \ 'adapter':    'ag',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
+
 let g:table_mode_corner="|"
+
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
