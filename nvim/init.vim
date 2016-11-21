@@ -3,21 +3,6 @@ if filereadable(expand("~/.config/nvim/plugins.vim"))
   source ~/.config/nvim/plugins.vim
 endif
 
-function! <SID>AutoProjectRootCD()
-  try
-    if &ft != 'help'
-      ProjectRootCD
-    endif
-  catch
-    " Silently ignore invalid buffers
-  endtry
-endfunction
-
-autocmd BufEnter * call <SID>AutoProjectRootCD()
-
-let g:AutoPairsUseInsertedCount = 1
-let g:chromatica#responsive_mode=1
-
 " Neovim Settings
 " leader is ,
 let mapleader = ','
@@ -53,16 +38,22 @@ syntax on
 set number
 set shell=/bin/zsh
 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
-"autocmd vimenter * NERDTree
+" Auto-pairs gentle
+let g:AutoPairsUseInsertedCount = 1
+let g:chromatica#responsive_mode=1
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" NERDTree key mapping -- BE AWARE NOT TO INSTALL CTRLP
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"
+" NERDTree open on dir open
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " Increment Search
 map /  <Plug>(incsearch-forward)
@@ -150,8 +141,23 @@ autocmd BufWritePost * Neomake
 
 " No need for ex mode
 nnoremap Q <nop>
+"nnoremap :W :w
+"nnoremap :Q :q
+
+"Shift + Direction to Change Tabs
+noremap <S-l> gt
+noremap <S-h> gT
+
+"Control + Direction to Change Panes
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+" close files
+noremap <leader>q :q<cr>
+
 " recording macros is not my thing
-map q <Nop>
+"map q <Nop>
 
 let g:airline_theme='one'
 
