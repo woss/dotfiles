@@ -14,3 +14,5 @@ vim/sessions
 .netrwhist
 bin/subl
 tags
+nvim/autoload/gocomplete.vim
+nvim/ftplugin/go/gocomplete.vim
