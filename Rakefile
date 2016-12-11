@@ -35,7 +35,7 @@ task :install => [:submodule_init, :submodules] do
 
   run_bundle_config
   create_go_folder
-  
+
   success_msg("installed")
 end
 
@@ -371,7 +371,7 @@ def apply_theme_to_iterm_profile_idx(index, color_scheme_path)
   run %{ defaults read com.googlecode.iterm2 }
 end
 
-def create_go_folder:
+def create_go_folder
   puts "Creating folder for GOPATH"
   run %{ mkdir -p $HOME/go }
 end
