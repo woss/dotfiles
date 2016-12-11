@@ -12,7 +12,8 @@ Plug 'lvht/fzf-mru'
 " improve / and ?
 Plug 'haya14busa/incsearch.vim'
 
-"Plug 'scrooloose/nerdtree'
+"Tags
+Plug 'craigemery/vim-autotag'
 
 "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
 "Plug 'dyng/ctrlsf.vim'
@@ -23,6 +24,8 @@ Plug 'sheerun/vim-polyglot'
 " Code formatter
 Plug 'Chiel92/vim-autoformat'
 
+" JSON
+Plug 'elzr/vim-json'
 " Search
 Plug 'eugen0329/vim-esearch'
 
@@ -37,7 +40,8 @@ Plug 'airblade/vim-rooter'
 "Plug 'kassio/neoterm'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/auto-pairs-gentle'
+Plug 'tpope/vim-surround'
+"Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'janko-m/vim-test'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neomake/neomake'

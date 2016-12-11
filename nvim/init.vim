@@ -3,6 +3,16 @@ if filereadable(expand("~/.config/nvim/plugins.vim"))
   source ~/.config/nvim/plugins.vim
 endif
 
+" NERDTree key mapping -- BE AWARE NOT TO INSTALL CTRLP
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"
+" NERDTree open on dir open
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
 " Neovim Settings
 " leader is ,
 let mapleader = ','
@@ -10,7 +20,9 @@ let mapleader = ','
 nnoremap ; :
 
 if exists("neovim_dot_app")
-  set guifont=DejaVu_Sans_Mono:h12
+   set guifont=DejaVu_Sans_Mono:h20
+   ",Inconsolata\ XL\ 12,Inconsolata\ 15,Monaco\ 12
+
   "set transparency=10
 else
   " Line below allows to do CMD+C (copy) from mouse selection while in terminal
@@ -39,21 +51,11 @@ set number
 set shell=/bin/zsh
 
 " Auto-pairs gentle
-let g:AutoPairsUseInsertedCount = 1
-let g:chromatica#responsive_mode=1
+"let g:AutoPairsUseInsertedCount = 1
+"let g:chromatica#responsive_mode=1
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-
-" NERDTree key mapping -- BE AWARE NOT TO INSTALL CTRLP
-silent! nmap <C-p> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
-
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
-" NERDTree open on dir open
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " Increment Search
 map /  <Plug>(incsearch-forward)
