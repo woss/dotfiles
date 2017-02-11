@@ -27,7 +27,9 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
+  'homebrew' \
   'history' \
+  'history-substring-search' \
   'directory' \
   'spectrum' \
   'utility' \
@@ -39,7 +41,9 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'ssh' \
   'prompt' \
-  'node'
+  'node' \
+  'python' \
+  'tmux'
 
 #
 # Editor
