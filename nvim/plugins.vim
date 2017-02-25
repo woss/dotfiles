@@ -16,7 +16,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'craigemery/vim-autotag'
 
 "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-"Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim'
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -43,24 +43,24 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/auto-pairs-gentle'
 "Plug 'janko-m/vim-test'
-"Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 "Plug 'neomake/neomake'
 "Plug 'dylanaraps/taskrunner.nvim'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
+Plug 'cjrh/vim-conda'
 
 " JavaScript
-"Plug 'Shutnik/jshint2.vim'
-"Plug 'carlitux/deoplete-ternjs'
+Plug 'Shutnik/jshint2.vim'
+Plug 'carlitux/deoplete-ternjs'
 "Plug 'mhartington/deoplete-typescript'
 "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 "Plug 'mustache/vim-mustache-handlebars'
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
 
 " Angular
-"Plug 'burnettk/vim-angular'
+Plug 'burnettk/vim-angular'
 
 " Golang
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for' :'go' }
