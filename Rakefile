@@ -301,7 +301,7 @@ def install_nvm
   puts
   puts "Installing nvm..."
 
-  run %{ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash }
+  run %{ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash }
 end
 
 def want_to_install? (section)
