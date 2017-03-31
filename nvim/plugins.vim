@@ -1,33 +1,34 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Essentials
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'scrooloose/nerdtree'
+"Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'neomake/neomake'
 
 " File search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'lvht/fzf-mru'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'lvht/fzf-mru'
 
 " improve / and ?
-Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch.vim'
 
 "Tags
-Plug 'craigemery/vim-autotag'
+" Plug 'craigemery/vim-autotag'
 
 "An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-Plug 'dyng/ctrlsf.vim'
+"Plug 'dyng/ctrlsf.vim'
 
 " Syntax highlighting
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 
 " Code formatter
-Plug 'Chiel92/vim-autoformat'
+"Plug 'Chiel92/vim-autoformat'
 
 " JSON
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 " Search
-Plug 'eugen0329/vim-esearch'
+"Plug 'eugen0329/vim-esearch'
 
 " Support for editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -35,32 +36,31 @@ Plug 'editorconfig/editorconfig-vim'
 " Status bar
 Plug 'vim-airline/vim-airline'
 
-Plug 'airblade/vim-rooter'
+"Plug 'airblade/vim-rooter'
 "Plug 'dbakker/vim-projectroot'
 "Plug 'kassio/neoterm'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/auto-pairs-gentle'
 "Plug 'janko-m/vim-test'
-Plug 'scrooloose/nerdcommenter'
-"Plug 'neomake/neomake'
+
 "Plug 'dylanaraps/taskrunner.nvim'
 " Group dependencies, vim-snippets depends on ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'cjrh/vim-conda'
 
 " JavaScript
-Plug 'Shutnik/jshint2.vim'
-Plug 'carlitux/deoplete-ternjs'
-"Plug 'mhartington/deoplete-typescript'
-"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-"Plug 'mustache/vim-mustache-handlebars'
-Plug 'pangloss/vim-javascript'
+" Plug 'Shutnik/jshint2.vim'
+" Plug 'carlitux/deoplete-ternjs'
+" Plug 'mhartington/deoplete-typescript'
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
+Plug 'vimlab/neojs'
 
 " Angular
-Plug 'burnettk/vim-angular'
+" Plug 'burnettk/vim-angular'
 
 " Golang
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for' :'go' }
@@ -73,12 +73,12 @@ Plug 'burnettk/vim-angular'
 "Plug 'saltstack/salt-vim', { 'for' : ['yaml', 'sls']}
 
 "Python
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
+"Plug 'zchee/deoplete-jedi', {'for': 'python'}
 
 " Theme
-" Plug 'tyrannicaltoucan/vim-deep-space'
-" Plug 'juanedi/predawn.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'juanedi/predawn.vim'
 Plug 'rakr/vim-one'
-" Plug 'dracula/vim'
+Plug 'dracula/vim'
 call plug#end()
 

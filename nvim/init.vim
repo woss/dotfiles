@@ -2,18 +2,6 @@
 if filereadable(expand("~/.config/nvim/plugins.vim"))
   source ~/.config/nvim/plugins.vim
 endif
-
-" NERDTree key mapping -- BE AWARE NOT TO INSTALL CTRLP
-silent! nmap <C-p> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
-
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
-" NERDTree open on dir open
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" Neovim Settings
 " leader is ,
 let mapleader = ','
 "Map ; to :
@@ -50,97 +38,8 @@ syntax on
 set number
 set shell=/bin/zsh
 
-" Auto-pairs gentle
-"let g:AutoPairsUseInsertedCount = 1
-"let g:chromatica#responsive_mode=1
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-" Increment Search
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" FZFMru binding
-nnoremap <leader>r :<C-u>FZFMru<cr>
-let g:fzf_mru_file_list_size = 25
-let g:fzf_mru_ignore_patterns = 'fugitive\|\.git/\|\.hg/\|\_^/tmp/'
-
-" FZF
-nnoremap <leader>f :<C-u>Files<cr>
-nnoremap <leader>t :<C-u>Tags<cr>
-nnoremap <leader>b :<C-u>Buffers<cr>
-"function! s:fzf_statusline()
-  "" Override statusline as you like
-  "highlight fzf1 ctermfg=161 ctermbg=251
-  "highlight fzf2 ctermfg=23 ctermbg=251
-  "highlight fzf3 ctermfg=237 ctermbg=251
-  "setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-"endfunction
-"autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-" This is the default extra key bindings
-let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
-      \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~35%' }
-"let g:fzf_layout = { 'window': 'enew' }
-"let g:fzf_layout = { 'window': '-tabnew' }
-
-let g:fzf_files_options =
-      \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'" --preview-window right:45%'
-
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.config/nvim/.fzf-history'
-
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R'
-
 
 " Esearch plugin setting
-let g:esearch = {
-  \ 'adapter':    'ag',
-  \ 'backend':    'nvim',
-  \ 'out':        'win',
-  \ 'batch_size': 1000,
-  \ 'use':        ['visual', 'hlsearch', 'last'],
-  \}
-
-let g:table_mode_corner="|"
-
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
-" Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_jsx_enabled_makers = ['eslint']
-" Allow JSX in normal JS files:
-" let g:jsx_ext_required = 0
-let g:neomake_javascript_eslint_maker = {
-            \ 'args': ['--no-color', '--format'],
-            \ 'errorformat': '%f: line %l\, col %c\, %m'
-            \ }
-autocmd BufWritePost * Neomake
-
 " No need for ex mode
 nnoremap Q <nop>
 "nnoremap :W :w
