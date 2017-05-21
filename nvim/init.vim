@@ -57,10 +57,24 @@ noremap <C-k> <C-w>k
 " close files
 noremap <leader>q :q<cr>
 
+"Enable Deoplete
+call deoplete#enable()
+
+
 " recording macros is not my thing
 "map q <Nop>
 
 let g:airline_theme='one'
+
+
+" FZF
+nnoremap <leader>f :<C-u>Files<cr>
+nnoremap <leader>t :<C-u>Tags<cr>
+nnoremap <leader>b :<C-u>Buffers<cr>
+let g:fzf_layout = { 'down': '~35%' }
+let g:fzf_files_options =
+      \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'" --preview-window right:45%'
+
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support

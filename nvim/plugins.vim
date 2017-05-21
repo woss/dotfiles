@@ -1,14 +1,18 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Essentials
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'scrooloose/nerdtree'
 "Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'neomake/neomake'
 
 " File search
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-"Plug 'lvht/fzf-mru'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'lvht/fzf-mru'
+Plug 'nvie/vim-flake8'
+
 
 " improve / and ?
 "Plug 'haya14busa/incsearch.vim'
@@ -36,28 +40,30 @@ Plug 'editorconfig/editorconfig-vim'
 " Status bar
 Plug 'vim-airline/vim-airline'
 
+" Must have
 "Plug 'airblade/vim-rooter'
 "Plug 'dbakker/vim-projectroot'
 "Plug 'kassio/neoterm'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deol.nvim'
+
 "Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/auto-pairs-gentle'
 "Plug 'janko-m/vim-test'
 
 "Plug 'dylanaraps/taskrunner.nvim'
-" Group dependencies, vim-snippets depends on ultisnips
-Plug 'cjrh/vim-conda'
+"Group dependencies, vim-snippets depends on ultisnips
+"Plug 'cjrh/vim-conda'
 
-" JavaScript
-" Plug 'Shutnik/jshint2.vim'
-" Plug 'carlitux/deoplete-ternjs'
-" Plug 'mhartington/deoplete-typescript'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-Plug 'vimlab/neojs'
+"JavaScript
+"Plug 'Shutnik/jshint2.vim'
+"Plug 'carlitux/deoplete-ternjs'
+"Plug 'mhartington/deoplete-typescript'
+"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+"Plug 'mustache/vim-mustache-handlebars'
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
+"Plug 'vimlab/neojs'
 
 " Angular
 " Plug 'burnettk/vim-angular'
