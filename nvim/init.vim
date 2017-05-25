@@ -65,7 +65,7 @@ call deoplete#enable()
 "map q <Nop>
 
 let g:airline_theme='one'
-
+nnoremap <leader>n :<C-u>edit .<cr>
 
 " FZF
 nnoremap <leader>f :<C-u>Files<cr>
