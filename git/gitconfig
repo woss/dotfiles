@@ -110,8 +110,8 @@
   default = upstream
 [core]
   autocrlf = false
-  editor = vim
-	excludesfile = /Users/danijel/.gitignore_global
+	editor = nvim
+	excludesfile = ~/.gitignore_global
 [advice]
   statusHints = false
 [diff]
@@ -139,7 +139,7 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/danijel/.stCommitMsg
+	template = ~/.stCommitMsg
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
