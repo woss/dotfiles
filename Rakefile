@@ -277,9 +277,9 @@ def install_prezto
 
   puts
   puts "Creating directories for your customizations"
-  run %{ mkdir -p $HOME/.zsh.before }
-  run %{ mkdir -p $HOME/.zsh.after }
-  run %{ mkdir -p $HOME/.zsh.prompts }
+  run %{ ln -nfs "$HOME/.yadr/zsh/zsh-before" "$HOME/.zsh.before" }
+  run %{ ln -nfs "$HOME/.yadr/zsh/zsh-after" "$HOME/.zsh.after" }
+  run %{ ln -nfs "$HOME/.yadr/zsh/zsh-prompts" "$HOME/.zsh.prompts" }
 
   if ENV["SHELL"].include? 'zsh' then
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"
