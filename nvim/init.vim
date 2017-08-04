@@ -4,6 +4,7 @@ if filereadable(expand("~/.config/nvim/plugins.vim"))
 endif
 " leader is ,
 let mapleader = ','
+
 "Map ; to :
 nnoremap ; :
 
@@ -60,7 +61,6 @@ noremap <leader>q :q<cr>
 "Enable Deoplete
 call deoplete#enable()
 
-
 " recording macros is not my thing
 "map q <Nop>
 
@@ -95,3 +95,18 @@ endif
 
 set background=dark " for the dark version / light
 colorscheme one
+
+"http://vim.wikia.com/wiki/Configuring_the_cursor
+if &term =~ "xterm\\|rxvt"
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;orange\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;red\x7"
+  silent !echo -ne "\033]12;red\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+endif
+
+
+"://github.com/tcnksm/docker-alias/blob/master/zshrclias dcps='docker-compose ps'

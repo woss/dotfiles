@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Essentials
-Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'scrooloose/nerdtree'
 "Plug 'jistr/vim-nerdtree-tabs'
@@ -12,8 +12,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lvht/fzf-mru'
 Plug 'nvie/vim-flake8'
-
-
 " improve / and ?
 "Plug 'haya14busa/incsearch.vim'
 
@@ -46,7 +44,9 @@ Plug 'vim-airline/vim-airline'
 "Plug 'kassio/neoterm'
 "Plug 'Shougo/deol.nvim'
 
-"Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/auto-pairs-gentle'
 "Plug 'janko-m/vim-test'
